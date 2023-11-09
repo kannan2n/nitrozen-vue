@@ -1,132 +1,128 @@
 <template>
-  <div class="nitrozen-form-input">
-    <!-- Label -->
-    <div class="n-input-label-container">
-      <label class="n-input-label" v-if="label" :for="id">
-        {{ label }} {{ required ? ' *' : '' }}
-        <span class="nitrozen-tooltip-icon" v-if="showTooltip">
-          <nitrozen-tooltip
-            :tooltipText="tooltipText"
-            position="top"
-          ></nitrozen-tooltip>
-        </span>
-      </label>
-      <label class="n-input-label n-input-maxlength" v-if="maxlength"
-        >{{ length }}/{{ maxlength }}</label
-      >
+  <div class="n-field" v-bind:class="{
+    'n-success': this.validationState == 'success',
+    'n-error': this.validationState == 'error',
+    'n-warning': this.validationState == 'warning'
+  }">
+
+    <!-- INPUT LABEL ::: START -->
+    <label class="n-label" v-if="label" :for="id">
+      {{ label }} {{ required ? ' *' : '' }}
+    </label>
+    <!-- INPUT LABEL ::: END -->
+
+    <!-- INPUT FIELD ::: START -->
+    <input v-if="type != 'textarea'" v-bind:class="{
+      'n-input-control': true,
+    }" v-on:keyup="eventEmit($event, 'keyup')" v-on:change="eventEmit($event, 'change')"
+      v-on:blur="eventEmit($event, 'blur')" v-on:focus="eventEmit($event, 'focus')"
+      v-on:click="eventEmit($event, 'click')" v-on:keypress="eventEmit($event, 'keypress')" :min="min" :max="max"
+      :maxlength="maxlength" :type="type" :placeholder="placeholder" :autocomplete="autocomplete" :id="id" :ref="id"
+      :disabled="disabled" :value="value" @input="valueChange" />
+    <!-- INPUT FIELD ::: END -->
+
+    <!-- HELPER TEXT AND VALIDATION MESSAGE ::: START -->
+    <div v-if="helperText" class="n-field-underinfo">
+      <nitrozen-validation v-if="validationState" :isHidden="validationState ? false : true"
+        :validationState="validationState" :label="validationMessage"></nitrozen-validation>
+      <span class="n-field-description">{{ helperText }}</span>
     </div>
+    <!-- HELPER TEXT AND VALIDATION MESSAGE ::: END -->
 
-    <!-- Input -->
-    <span class="nitrozen-loader-div" v-if="loaderShow && search">
-      <img :src="getLoader" />
-    </span>
 
-    <div class="nitrozen-input-grp">
-      <!-- Search Icon -->
-      <span class="nitrozen-search-icon" v-if="showSearchIcon">
-        <nitrozen-inline :icon="'search'"></nitrozen-inline>
+
+    <!-- #######%%%%******** old *********%%%%%######## -->
+    <div class="nitrozen-form-input" style="display: none;">
+      <!-- Label -->
+      <div class="n-input-label-container">
+        <label class="n-input-label" v-if="label" :for="id">
+          {{ label }} {{ required ? ' *' : '' }}
+          <span class="nitrozen-tooltip-icon" v-if="showTooltip">
+            <nitrozen-tooltip :tooltipText="tooltipText" position="top"></nitrozen-tooltip>
+          </span>
+        </label>
+        <label class="n-input-label n-input-maxlength" v-if="maxlength">{{ length }}/{{ maxlength }}</label>
+      </div>
+
+      <!-- Input -->
+      <span class="nitrozen-loader-div" v-if="loaderShow && search">
+        <img :src="getLoader" />
       </span>
 
-      <!-- Prefix -->
-      <nitrozen-input-prefix
-        v-if="showPrefix"
-        v-bind:class="{
+      <div class="nitrozen-input-grp">
+        <!-- Search Icon -->
+        <span class="nitrozen-search-icon" v-if="showSearchIcon">
+          <nitrozen-inline :icon="'search'"></nitrozen-inline>
+        </span>
+
+        <!-- Prefix -->
+        <nitrozen-input-prefix v-if="showPrefix" v-bind:class="{
           'nitrozen-prefix-padding': !custom,
           'n-texttype-position': typeof prefix === 'string',
           'n-svg-position': typeof prefix !== 'string',
           'nitrozen-input-prefix': true,
-        }"
-      >
-        <span v-if="custom"><slot /></span>
-        <span v-else>
-          {{ prefix }}
-        </span>
-      </nitrozen-input-prefix>
+        }">
+          <span v-if="custom">
+            <slot />
+          </span>
+          <span v-else>
+            {{ prefix }}
+          </span>
+        </nitrozen-input-prefix>
 
-      <!-- Input -->
-      <input
-        v-if="type != 'textarea'"
-        v-bind:class="{
+        <!-- Input -->
+        <input v-if="type != 'textarea'" v-bind:class="{
           'nitrozen-search-input-padding': showSearchIcon || showPrefix,
           'nitrozen-search-input-right-padding': showSuffix,
           'n-input': true,
           'input-text': true,
-           'n-success': this.validationState == 'success',
+          'n-success': this.validationState == 'success',
           'n-error-border': this.validationState == 'error',
           'n-warning-border': this.validationState == 'warning',
-        /*  'n-input-default-border': !['success', 'error', 'warning'].includes(
-            this.validationState
-          ), */
-        }"
-        v-on:keyup="eventEmit($event, 'keyup')"
-        v-on:change="eventEmit($event, 'change')"
-        v-on:blur="eventEmit($event, 'blur')"
-        v-on:focus="eventEmit($event, 'focus')"
-        v-on:click="eventEmit($event, 'click')"
-        v-on:keypress="eventEmit($event, 'keypress')"
-        :min="min"
-        :max="max"
-        :maxlength="maxlength"
-        :type="type"
-        :placeholder="placeholder"
-        :autocomplete="autocomplete"
-        :id="id"
-        :ref="id"
-        :disabled="disabled"
-        :value="value"
-        @input="valueChange"
-      />
+          /*  'n-input-default-border': !['success', 'error', 'warning'].includes(
+              this.validationState
+            ), */
+        }" v-on:keyup="eventEmit($event, 'keyup')" v-on:change="eventEmit($event, 'change')"
+          v-on:blur="eventEmit($event, 'blur')" v-on:focus="eventEmit($event, 'focus')"
+          v-on:click="eventEmit($event, 'click')" v-on:keypress="eventEmit($event, 'keypress')" :min="min" :max="max"
+          :maxlength="maxlength" :type="type" :placeholder="placeholder" :autocomplete="autocomplete" :id="id" :ref="id"
+          :disabled="disabled" :value="value" @input="valueChange" />
 
-      <!-- Textarea -->
-      <textarea
-        v-if="type == 'textarea'"
-        v-on:keyup="eventEmit($event, 'keyup')"
-        v-on:change="eventEmit($event, 'change')"
-        v-on:blur="eventEmit($event, 'blur')"
-        v-on:focus="eventEmit($event, 'focus')"
-        v-on:click="eventEmit($event, 'click')"
-        v-on:keypress="eventEmit($event, 'keypress')"
-        v-bind:class="{
-          'n-input-textarea': type == 'textarea',
-          'n-success-border': this.validationState == 'success',
-          'n-error-border': this.validationState == 'error',
-          'n-warning-border': this.validationState == 'warning',
-          'n-input': true,
-          'input-text': true,
-        /*   'n-input-default-border': !['success', 'error', 'warning'].includes(
-            this.validationState
-          ), */
-        }"
-        :maxlength="maxlength"
-        :disabled="disabled"
-        :ref="id"
-        :placeholder="placeholder"
-        :value="value"
-        @input="valueChange"
-      ></textarea>
+        <!-- Textarea -->
+        <textarea v-if="type == 'textarea'" v-on:keyup="eventEmit($event, 'keyup')"
+          v-on:change="eventEmit($event, 'change')" v-on:blur="eventEmit($event, 'blur')"
+          v-on:focus="eventEmit($event, 'focus')" v-on:click="eventEmit($event, 'click')"
+          v-on:keypress="eventEmit($event, 'keypress')" v-bind:class="{
+            'n-input-textarea': type == 'textarea',
+            'n-success-border': this.validationState == 'success',
+            'n-error-border': this.validationState == 'error',
+            'n-warning-border': this.validationState == 'warning',
+            'n-input': true,
+            'input-text': true,
+            /*   'n-input-default-border': !['success', 'error', 'warning'].includes(
+                this.validationState
+              ), */
+          }" :maxlength="maxlength" :disabled="disabled" :ref="id" :placeholder="placeholder" :value="value"
+          @input="valueChange"></textarea>
 
-      <!-- Suffix -->
-      <nitrozen-input-suffix
-        v-if="showSuffix"
-        v-bind:class="{
+        <!-- Suffix -->
+        <nitrozen-input-suffix v-if="showSuffix" v-bind:class="{
           'nitrozen-suffix-padding': !custom,
           'n-texttype-position': typeof suffix === 'string',
           'n-svg-position': typeof suffix !== 'string',
           'nitrozen-input-suffix': true,
-        }"
-      >
-        <span v-if="custom"><slot /></span>
-        <span v-else>{{ suffix }}</span>
-      </nitrozen-input-suffix>
-    </div>
-    <div v-if="helperText" class="n-input-underinfo">
-      <span class="n-helper-text">{{ helperText }}</span>
-      <nitrozen-validation
-        v-if="validationState"
-        :isHidden="validationState ? false : true"
-        :validationState="validationState"
-        :label="validationMessage"
-      ></nitrozen-validation>
+        }">
+          <span v-if="custom">
+            <slot />
+          </span>
+          <span v-else>{{ suffix }}</span>
+        </nitrozen-input-suffix>
+      </div>
+      <div v-if="helperText" class="n-input-underinfo">
+        <span class="n-helper-text">{{ helperText }}</span>
+        <nitrozen-validation v-if="validationState" :isHidden="validationState ? false : true"
+          :validationState="validationState" :label="validationMessage"></nitrozen-validation>
+      </div>
     </div>
   </div>
 </template>
@@ -157,7 +153,7 @@ export default {
     length: function () {
       return this.value.length;
     },
-    getLoader(){
+    getLoader() {
       return LOADER_CDN_URL
     }
   },
@@ -267,6 +263,14 @@ export default {
     if (this.autofocus) {
       this.$refs[this.id].focus();
     }
+    this.validationState = 'success';
+    this.validationMessage = 'Success text'
+
+    // this.validationState = 'error';
+    // this.validationMessage = 'Error text'
+
+    // this.validationState = 'warning';
+    // this.validationMessage = 'Warning text'
   },
   methods: {
     valueChange: function (event) {
