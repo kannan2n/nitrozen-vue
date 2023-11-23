@@ -1,8 +1,8 @@
 <template>
-    <div v-if="!isHidden" class="n-validation-container" :class="validatorClass">
-        <nitrozen-icon class="n-validator-icon" :color="getValidatorIconColor" :name="validationState" :size="size"/>
-        <span>{{ label }}</span>
-    </div>
+  <div v-if="!isHidden" class="n-validation-container" :class="validatorClass">
+    <nitrozen-icon class="n-validator-icon" :color="getValidatorIconColor" :name="validationState" :size="size" />
+    <span>{{ label }}</span>
+  </div>
 </template>
 
 <script>
@@ -14,25 +14,25 @@ export default {
   },
   props: {
     validationState: {
-            type: String,
-            default: 'default',
-            validator(value) {
-                // The value must match one of these strings
-                return ['success', 'warning', 'error', 'default','info'].includes(value)
-            }
-        },
-        label: {
-            type: String,
-            default: "Default Label"
-        },
-        isHidden:{
-            type: Boolean,
-            default: false
-        },
-        size:{
-            type: Number,
-            default: 16
-        }
+      type: String,
+      default: 'default',
+      validator(value) {
+        // The value must match one of these strings
+        return ['success', 'warning', 'error', 'default', 'info'].includes(value)
+      }
+    },
+    label: {
+      type: String,
+      default: "Default Label"
+    },
+    isHidden: {
+      type: Boolean,
+      default: false
+    },
+    size: {
+      type: Number,
+      default: 16
+    }
   },
   computed: {
     validatorClass() {
@@ -47,9 +47,9 @@ export default {
     },
     getValidatorIconColor() {
       let colorMap = {
-        success: '#0a5f23',
-        error: '#cd0909',
-        warning: '#f5a300',
+        success: '#25ab21',
+        error: '#f50031',
+        warning: '#7d2f08',
       };
       return colorMap[this.$props.validationState];
     },
@@ -61,7 +61,7 @@ export default {
 @import url('../../base/base.less');
 
 .n-validator-icon {
-  margin-right: 0.5rem;
+  margin-right: 8px;
 }
 
 .n-validation-container {
@@ -70,27 +70,37 @@ export default {
   align-items: center;
   width: fit-content;
   height: fit-content;
-  font-family: 'JioType';
-  font-size: 1.2rem;
+  font-family: "JioType", helvetica, arial, sans-serif;
+  font-weight: 500;
+  text-transform: none;
+  font-size: 14px;
+  letter-spacing: -0.07px;
 }
+
 .n-validation-success {
-  color: @SuccessColor;
+  color: @ColorFeedbackSuccess80;
+
   svg {
-    fill: @WarningColor;
+    fill: @ColorFeedbackSuccess50;
   }
 }
+
 .n-validation-error {
-  color: @ErrorColor;
+  color: @ColorFeedbackError80;
+
   svg {
-    fill: @WarningColor;
+    fill: @ColorFeedbackError50;
   }
 }
+
 .n-validation-warning {
-  color: @WarningColor;
+  color: @ColorFeedbackWarning80;
+
   svg path {
-    fill: @WarningColor;
+    fill: @ColorFeedbackWarning50;
   }
 }
+
 .n-validation-default {
   color: #141414;
 }
