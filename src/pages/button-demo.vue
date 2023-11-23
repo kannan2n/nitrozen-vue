@@ -127,6 +127,270 @@
       <div class="main-div space-between">
         <nitrozen-button :size="'small'" :theme="'primary'" :icon="'arrow_back'" :iconRight="'paste'" :showProgress="true">Recharge Now</nitrozen-button>
       </div>
+
+
+      <!--div class="subtitle">Primary Button</div>
+      <div class="main-div space-between">
+        <nitrozen-button size="small" theme="primary">Recharge Now</nitrozen-button>
+        <nitrozen-button size="small" theme="secondary">Recharge Now</nitrozen-button>
+        <nitrozen-button size="small" theme="tertiary">Recharge Now</nitrozen-button>
+
+        <nitrozen-button size="small" theme="primary" state="normal">Recharge Now</nitrozen-button>
+        <nitrozen-button size="small" theme="primary" state="destructive">Recharge Now</nitrozen-button>
+        <nitrozen-button size="small" theme="primary" state="positive">Recharge Now</nitrozen-button>
+
+        <nitrozen-button size="small" theme="secondary" state="normal">Recharge Now</nitrozen-button>
+        <nitrozen-button size="small" theme="secondary" state="destructive">Recharge Now</nitrozen-button>
+        <nitrozen-button size="small" theme="secondary" state="positive">Recharge Now</nitrozen-button>
+      </div>
+      <div class="main-div space-between">
+        
+
+        <nitrozen-button size="small" theme="tertiary" state="normal">Recharge Now</nitrozen-button>
+        <nitrozen-button size="small" theme="tertiary" state="destructive">Recharge Now</nitrozen-button>
+        <nitrozen-button size="small" theme="tertiary" state="positive">Recharge Now</nitrozen-button>
+
+      </div>
+      <div class="subtitle">Secondary Button</div>
+      <div class="main-div space-between">
+        <nitrozen-button size="small" theme="primary">Recharge Now</nitrozen-button>
+        <nitrozen-button size="small" theme="secondary">Recharge Now</nitrozen-button>
+        <nitrozen-button size="small" theme="tertiary">Recharge Now</nitrozen-button>
+
+        <nitrozen-button size="small" theme="primary" state="normal">Recharge Now</nitrozen-button>
+        <nitrozen-button size="small" theme="secondary" state="destructive">Recharge Now</nitrozen-button>
+        <nitrozen-button size="small" theme="tertiary" state="positive">Recharge Now</nitrozen-button>
+
+      </div-->
+      <!-- Flat Button -->
+      <!--div class="main-div space-between">
+        <nitrozen-button  @click="someFunc" class="n-button-small">Primary Flat {{ numberOfClick }}</nitrozen-button
+        >
+        <div class="hover-new">
+          <nitrozen-button >Hover Flat</nitrozen-button>
+        </div>
+        <nitrozen-button  :showProgress="true"></nitrozen-button>
+        <nitrozen-button  :focused="true"
+          >Focused Flat</nitrozen-button
+        >
+        <nitrozen-button  :disabled="true"
+          >Disabled Flat</nitrozen-button
+        >
+      </div-->
+
+      <!-- Flat Stroke Button -->
+      <!--div class="main-div space-between">
+        <nitrozen-button >Primary Stroke</nitrozen-button>
+        <div class="hover-new">
+          <nitrozen-button >Hover Stroke</nitrozen-button>
+        </div>
+        <nitrozen-button  :focused="true"
+          >Focused Stroke</nitrozen-button
+        >
+        <nitrozen-button  :disabled="true"
+          >Disabled Stroke</nitrozen-button
+        >
+      </div-->
+
+      <!-- Rounded Button -->
+      <!--div class="main-div space-between">
+        <nitrozen-button  :rounded="true">Rounded</nitrozen-button>
+        <div class="hover-new">
+          <nitrozen-button  :rounded="true">Hover</nitrozen-button>
+        </div>
+        <nitrozen-button
+          
+          :rounded="true"
+          :showProgress="true"
+        ></nitrozen-button>
+        <nitrozen-button  :rounded="true" :focused="true"
+          >Focused</nitrozen-button
+        >
+        <nitrozen-button  :rounded="true" :disabled="true"
+          >Disabled</nitrozen-button
+        >
+      </div-->
+
+      <!-- Rounded Stroke Button -->
+      <!--div class="main-div space-between">
+        <nitrozen-button  :rounded="true">Rounded</nitrozen-button>
+        <div class="hover-new">
+          <nitrozen-button  :rounded="true">Hover</nitrozen-button>
+        </div>
+        <nitrozen-button  :rounded="true" :focused="true"
+          >Focused</nitrozen-button
+        >
+        <nitrozen-button  :rounded="true" :disabled="true"
+          >Disabled</nitrozen-button
+        >
+      </div-->
+
+      <!-- Secondary Flat Button -->
+      <!--div class="main-div space-between">
+        <nitrozen-button  :theme="'secondary'"
+          >Primary Small Flat</nitrozen-button
+        >
+        <nitrozen-button  :theme="'secondary'"
+        size="medium"
+          >Primary Medium Flat</nitrozen-button
+        >
+        <nitrozen-button  :theme="'secondary'"
+        size="large"
+          >Primary Large Flat</nitrozen-button
+        >
+        <div class="hover-new">
+          <nitrozen-button  :theme="'secondary'"
+            >Hover Flat</nitrozen-button
+          >
+        </div>
+        <nitrozen-button
+          
+          :showProgress="true"
+          :theme="'secondary'"
+        ></nitrozen-button>
+        <nitrozen-button  :focused="true" :theme="'secondary'"
+          >Focused Flat</nitrozen-button
+        >
+        <nitrozen-button  :disabled="true" :theme="'secondary'"
+          >Disabled Flat</nitrozen-button
+        >
+      </div-->
+
+      <!-- Secondary Stroke Button -->
+      <!--div class="main-div space-between">
+        <nitrozen-button  :theme="'secondary'"
+          >Primary</nitrozen-button
+        >
+        <div class="hover-new">
+          <nitrozen-button  :theme="'secondary'"
+            >Hover</nitrozen-button
+          >
+        </div>
+        <nitrozen-button  :focused="true" :theme="'secondary'"
+          >Focused Stroke</nitrozen-button
+        >
+        <nitrozen-button  :disabled="true" :theme="'secondary'"
+          >Disabled</nitrozen-button
+        >
+      </div-->
+
+      <!-- Secondary Rounded Button -->
+      <!--div class="main-div space-between">
+        <nitrozen-button  :theme="'secondary'" :rounded="true"
+          >Rounded</nitrozen-button
+        >
+        <div class="hover-new">
+          <nitrozen-button  :theme="'secondary'" :rounded="true"
+            >Hover</nitrozen-button
+          >
+        </div>
+        <nitrozen-button
+          
+          :showProgress="true"
+          :theme="'secondary'"
+          :rounded="true"
+        ></nitrozen-button>
+        <nitrozen-button
+          
+          :focused="true"
+          :rounded="true"
+          :theme="'secondary'"
+          >Disabled</nitrozen-button
+        >
+        <nitrozen-button
+          
+          :disabled="true"
+          :rounded="true"
+          :theme="'secondary'"
+          >Disabled</nitrozen-button
+        >
+      </div-->
+
+      <!-- Secondary Rounded Stroke Button -->
+      <!--div class="main-div space-between">
+        <nitrozen-button  :rounded="true" :theme="'secondary'"
+          >Primary</nitrozen-button
+        >
+        <div class="hover-new">
+          <nitrozen-button  :rounded="true" :theme="'secondary'"
+            >Hover</nitrozen-button
+          >
+        </div>
+        <nitrozen-button
+          
+          :rounded="true"
+          :focused="true"
+          :theme="'secondary'"
+          >Focused</nitrozen-button
+        >
+        <nitrozen-button
+          
+          :rounded="true"
+          :disabled="true"
+          :theme="'secondary'"
+          >Disabled</nitrozen-button
+        >
+      </div-->
+
+      <!-- Gropup Button -->
+      <!--div class="main-div">
+        <div class="grouping">
+          <div class="width-50">
+            <nitrozen-button >Save</nitrozen-button>
+            <nitrozen-button >Cancel</nitrozen-button>
+          </div>
+
+          <div class="width-50">
+            <nitrozen-button >Save</nitrozen-button>
+            <nitrozen-button>Cancel</nitrozen-button>
+          </div>
+        </div>
+      </div-->
+
+      <!-- Large Button -->
+      <!--div class="main-div space-between">
+        <nitrozen-button  :size="'large'"
+          >Large Button</nitrozen-button
+        >
+        <nitrozen-button  :size="'large'" :theme="'secondary'"
+          >Large Button</nitrozen-button
+        >
+      </div-->
+
+      <!-- Basic Button -->
+      <!--div class="main-div space-between">
+        <nitrozen-button :href="'https://google.com'">Primary</nitrozen-button>
+        <nitrozen-button :href="'https://google.com'" :theme="'secondary'"
+          >Secondary</nitrozen-button
+        >
+        <nitrozen-button :href="'https://google.com'" :focused="true"
+          >Focused</nitrozen-button
+        >
+        <nitrozen-button  :large="true" :theme="'secondary'">Large Button</nitrozen-button>
+      </div-->
+
+      <!--div class="main-div space-between">
+        <nitrozen-button  :icon="'facebook'" :theme="'secondary'"
+          >Facebook</nitrozen-button
+        >
+        <nitrozen-button
+          @click="autofocusSearch = !autofocusSearch"
+          
+          :icon="'bag'"
+          :theme="'secondary'"
+          >Bag</nitrozen-button
+        >
+      </div-->
+      <!-- Toggle Button -->
+      <!--div class="main-div space-between">
+        <nitrozen-toggle-btn></nitrozen-toggle-btn>
+        <nitrozen-toggle-btn
+          v-model="abcd"
+          @change="checkValue"
+        ></nitrozen-toggle-btn>
+      </div-->
+      
+
     </div>
     </div> 
 </template>
